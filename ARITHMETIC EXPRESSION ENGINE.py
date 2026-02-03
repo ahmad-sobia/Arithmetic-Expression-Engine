@@ -10,7 +10,7 @@ class ExpressionEngine:
     def is_operand(self, ch):
         return ch.isalnum()
 
-    # ---------------- INFIX → POSTFIX ---------------- #
+    # INFIX → POSTFIX #
 
     def infix_to_postfix(self, expr):
         stack = []
@@ -37,14 +37,14 @@ class ExpressionEngine:
                     postfix.append(stack.pop())
                 stack.append(ch)
 
-            print(f"{ch}\t{stack}\t\t{postfix}")
+            print("{ch}\t{stack}\t\t{postfix}")
 
         while stack:
             postfix.append(stack.pop())
 
         return postfix
 
-    # ---------------- INFIX → PREFIX ---------------- #
+    #  INFIX → PREFIX  #
 
     def infix_to_prefix(self, expr):
         expr = expr[::-1]
@@ -54,7 +54,7 @@ class ExpressionEngine:
         prefix = postfix[::-1]
         return prefix
 
-    # ---------------- POSTFIX → INFIX ---------------- #
+    #  POSTFIX → INFIX  #
 
     def postfix_to_infix(self, expr):
         stack = []
@@ -73,11 +73,11 @@ class ExpressionEngine:
                 a = stack.pop()
                 stack.append(f"({a}{ch}{b})")
 
-            print(f"{ch}\t{stack}")
+            print("{ch}\t{stack}")
 
         return stack[0]
 
-    # ---------------- PREFIX → INFIX ---------------- #
+    #  PREFIX → INFIX  #
 
     def prefix_to_infix(self, expr):
         stack = []
@@ -96,11 +96,11 @@ class ExpressionEngine:
                 b = stack.pop()
                 stack.append(f"({a}{ch}{b})")
 
-            print(f"{ch}\t{stack}")
+            print("{ch}\t{stack}")
 
         return stack[0]
 
-    # ---------------- POSTFIX EVALUATION ---------------- #
+    # POSTFIX EVALUATION #
 
     def evaluate_postfix(self, expr):
         stack = []
@@ -124,12 +124,12 @@ class ExpressionEngine:
                 elif ch == '/': stack.append(a / b)
                 elif ch == '^': stack.append(a ** b)
 
-            print(f"{ch}\t{stack}")
+            print("{ch}\t{stack}")
 
         return stack[0]
 
 
-# ---------------- MAIN MENU ---------------- #
+#  MAIN MENU  #
 
 engine = ExpressionEngine()
 
@@ -176,4 +176,5 @@ while True:
 
     except Exception as e:
         print("Error:", e)
+
 
